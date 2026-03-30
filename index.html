@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KineticCraft — Твой лимит бесконечность</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">KINETIC<span class="accent">CRAFT</span></a>
+        <nav class="nav">
+            <a href="index.html" class="nav-link active">Главная</a>
+            <a href="download.html" class="nav-link">Скачать</a>
+            <a href="changelog.html" class="nav-link">Обновления</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="auth.html" class="nav-link">Вход</a>
+        </nav>
+        <button id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main class="container">
+    <section class="col-12 hero-center" data-aos="zoom-out">
+        <h1 class="brand-title">KINETIC<span class="accent">CRAFT</span></h1>
+        <h2 class="slogan-text">Твой лимит — бесконечность.</h2>
+        <p class="sub-description">Заряжен на максимум. Оптимизирован для каждого.</p>
+        <div class="cta-group">
+            <a href="download.html" class="btn-mega">Ворваться в игру</a>
+            <a href="auth.html" class="btn-mega" style="background: transparent; border: 2px solid var(--accent); color: var(--accent);">Войти</a>
+        </div>
+    </section>
+
+    <section class="container stats-row" data-aos="fade-up">
+        <div class="col-4 stat-card glass-panel">
+            <div class="stat-value" id="online">...</div>
+            <div class="stat-desc">Игроков онлайн</div>
+        </div>
+        <div class="col-4 stat-card glass-panel">
+            <div class="stat-value">5000+</div>
+            <div class="stat-desc">Всего аккаунтов</div>
+        </div>
+        <div class="col-4 stat-card glass-panel">
+            <div class="stat-value">24/7</div>
+            <div class="stat-desc">Работа сервера</div>
+        </div>
+    </section>
+
+    <section class="container info-grid">
+        <div class="col-12 section-header" data-aos="fade-right">
+            <h2 class="section-title">Почему выбирают <span class="accent">нас</span>?</h2>
+        </div>
+
+        <div class="col-4 feature-box" data-aos="fade-up">
+            <i class="fas fa-bolt-lightning icon-accent"></i>
+            <h3>Производительность</h3>
+            <p>Наш лаунчер оптимизирован на низком уровне. FPS в игре будет выше, чем в стандартных сборках.</p>
+        </div>
+
+        <div class="col-4 feature-box" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-shield-cat icon-accent"></i>
+            <h3>Защита KineticGuard</h3>
+            <p>Собственная система античита и защиты аккаунта. Твои постройки и ресурсы под надежным замком.</p>
+        </div>
+
+        <div class="col-4 feature-box" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-cubes icon-accent"></i>
+            <h3>Уникальный контент</h3>
+            <p>Мы не просто сервер. Мы создаем свои моды и механики, которые расширяют границы ванильного майна.</p>
+        </div>
+    </section>
+
+    <section class="container features-grid">
+        <div class="col-12 section-header" data-aos="fade-right">
+            <h2 class="section-title">Почему <span class="accent">Kinetic</span>?</h2>
+        </div>
+        
+        <div class="col-4 feature-card glass-panel" data-aos="flip-left">
+            <i class="fas fa-rocket feature-icon"></i>
+            <h3>Мгновенный запуск</h3>
+            <p>Наш лаунчер оптимизирован под слабые ПК. Забудь про долгие загрузки чанков.</p>
+        </div>
+
+        <div class="col-4 feature-card glass-panel" data-aos="flip-left" data-aos-delay="100">
+            <i class="fas fa-shield-halved feature-icon"></i>
+            <h3>Честная игра</h3>
+            <p>Собственный античит KineticGuard блокирует 99% известных читов еще до захода на сервер.</p>
+        </div>
+
+        <div class="col-4 feature-card glass-panel" data-aos="flip-left" data-aos-delay="200">
+            <i class="fas fa-microchip feature-icon"></i>
+            <h3>Свои моды</h3>
+            <p>Уникальные механики и контент, который ты не найдешь в обычном ванильном Minecraft.</p>
+        </div>
+    </section>
+
+    <section class="container discord-cta" data-aos="zoom-in">
+        <div class="col-12 glass-panel discord-wrapper">
+            <div class="discord-content">
+                <h2>Стань частью комьюнити</h2>
+                <p>Общайся, торгуй и находи друзей в нашем Discord сервере.</p>
+                <a href="#" class="btn-discord"><i class="fab fa-discord"></i> Присоединиться</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="col-4 footer-info">
+            <div class="logo">KINETIC<span>CRAFT</span></div>
+            <p>Новое поколение лаунчеров. Драйв в каждом блоке.</p>
+        </div>
+        <div class="col-4 footer-nav">
+            <h4>Навигация</h4>
+            <a href="index.html">Главная</a>
+            <a href="download.html">Скачать</a>
+            <a href="changelog.html">Обновления</a>
+            <a href="reviews.html">Отзывы</a>
+            <a href="auth.html">Вход / Регистрация</a>
+        </div>
+        <div class="col-4 footer-social">
+            <h4>Мы в сети</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

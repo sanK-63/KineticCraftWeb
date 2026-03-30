@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KineticCraft — Скачать лаунчер</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .download-card {
+      text-align: center;
+      padding: 40px 30px;
+    }
+    
+    .download-card .icon-box {
+      margin-bottom: 20px;
+    }
+    
+    .download-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+    }
+    
+    .download-card .btn-mega {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 40px;
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+    
+    .file-info {
+      text-align: left;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .file-info p {
+      margin: 8px 0;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .file-info strong {
+      color: var(--text);
+    }
+    
+    .checksum {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      word-break: break-all;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+    
+    .checksum code {
+      color: var(--accent);
+      font-family: monospace;
+    }
+    
+    .platform-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .platform-tab {
+      padding: 12px 25px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .platform-tab:hover,
+    .platform-tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">KINETIC<span class="accent">CRAFT</span></a>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="download.html" class="nav-link active">Скачать</a>
+            <a href="changelog.html" class="nav-link">Обновления</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="auth.html" class="nav-link">Вход</a>
+        </nav>
+        <button id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main class="page-wrapper container">
+    <div class="col-12" data-aos="fade-down">
+        <h1 class="page-title">Скачать лаунчер</h1>
+    </div>
+
+    <div class="col-6 glass-panel download-card" data-aos="flip-left">
+        <div class="icon-box">
+            <i class="fab fa-windows" style="font-size: 4rem; color: var(--accent);"></i>
+        </div>
+        <h2>KineticCraft Launcher v1.0</h2>
+        
+        <a href="#" class="btn-mega">
+            <i class="fas fa-download"></i> СКАЧАТЬ (.EXE)
+        </a>
+
+        <div class="file-info">
+            <p><strong>Размер:</strong> 168.6 MB</p>
+            <p><strong>Система:</strong> Windows 10/11</p>
+            <p><strong>Версия Java:</strong> 17 (встроенная)</p>
+            <p class="checksum">
+                <strong>SHA256:</strong><br>
+                <code>b18ed8d365461cb51d1a49b0af9c51195636af2ed0f610c2334abd03839312b6</code>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-6 glass-panel download-card" data-aos="flip-left" data-aos-delay="100">
+        <div class="icon-box">
+            <i class="fab fa-linux" style="font-size: 4rem; color: var(--accent);"></i>
+        </div>
+        <h2>KineticCraft Launcher v1.0</h2>
+        
+        <a href="#" class="btn-mega">
+            <i class="fas fa-download"></i> СКАЧАТЬ (AppImage)
+        </a>
+
+        <div class="file-info">
+            <p><strong>Размер:</strong> 145.2 MB</p>
+            <p><strong>Система:</strong> Linux (Ubuntu, Debian)</p>
+            <p><strong>Версия Java:</strong> 17 (встроенная)</p>
+            <p class="checksum">
+                <strong>SHA256:</strong><br>
+                <code>a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456</code>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-12 glass-panel" data-aos="fade-up" style="text-align: center; margin-top: 20px;">
+        <h3 style="margin-bottom: 15px;">Антивирусные предупреждения</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">
+            Некоторые антивирусы могут показывать предупреждение о скачиваемом файле. 
+            Это связано с тем, что лаунчер содержит системные файлы Minecraft. 
+            Мы гарантируем безопасность нашего программного обеспечения.
+        </p>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="col-4 footer-info">
+            <div class="logo">KINETIC<span>CRAFT</span></div>
+            <p>Новое поколение лаунчеров.</p>
+        </div>
+        <div class="col-4 footer-nav">
+            <h4>Навигация</h4>
+            <a href="index.html">Главная</a>
+            <a href="download.html">Скачать</a>
+            <a href="changelog.html">Обновления</a>
+            <a href="reviews.html">Отзывы</a>
+            <a href="auth.html">Вход / Регистрация</a>
+        </div>
+        <div class="col-4 footer-social">
+            <h4>Мы в сети</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

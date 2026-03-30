@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KineticCraft — Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px;
+        }
+        
+        .auth-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0.5;
+        }
+        
+        .auth-tab.active {
+            opacity: 1;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        
+        .auth-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+        }
+        
+        .auth-form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .auth-form button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .auth-form button:hover {
+            box-shadow: 0 0 25px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+        
+        .file-upload {
+            margin: 15px 0;
+        }
+        
+        .file-upload label {
+            display: block;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .file-upload label:hover {
+            border-color: var(--accent);
+            opacity: 1;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .auth-logo {
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo .logo {
+            font-size: 2rem;
+        }
+        
+        .user-panel {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">KINETIC<span class="accent">CRAFT</span></a>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="download.html" class="nav-link">Скачать</a>
+            <a href="changelog.html" class="nav-link">Обновления</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="auth.html" class="nav-link active">Вход</a>
+        </nav>
+        <button id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<div class="auth-wrapper">
+    <div class="auth-container glass-panel" data-aos="zoom-in">
+        <div class="auth-logo">
+            <a href="index.html" class="logo">KINETIC<span class="accent">CRAFT</span></a>
+        </div>
+        
+        <div class="auth-tabs">
+            <button id="login-tab" class="auth-tab active">ВХОД</button>
+            <button id="reg-tab" class="auth-tab">РЕГИСТРАЦИЯ</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+            <input type="text" placeholder="Никнейм" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">ВОЙТИ</button>
+        </form>
+
+        <form id="reg-form" class="auth-form" style="display: none;">
+            <input type="text" placeholder="Придумайте никнейм" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Пароль" required>
+            <div class="file-upload">
+                <label for="skin-file">Загрузить скин (.png)</label>
+                <input type="file" id="skin-file" accept=".png">
+            </div>
+            <button type="submit">СОЗДАТЬ АККАУНТ</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+  const supabaseUrl = 'https://enlcsziwdihbxtlvqxvv.supabase.co' 
+  const supabaseKey = 'sb_publishable_QaAR-8mGn76W2qxzyucSOA_kKqDFsC0'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init();
+    
+    // Проверка авторизации при загрузке
+    checkAuth();
+
+    const loginTab = document.getElementById('login-tab');
+    const regTab = document.getElementById('reg-tab');
+    const loginForm = document.getElementById('login-form');
+    const regForm = document.getElementById('reg-form');
+    
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      regTab.classList.remove('active');
+      loginForm.style.display = 'block';
+      regForm.style.display = 'none';
+    });
+    
+    regTab.addEventListener('click', () => {
+      regTab.classList.add('active');
+      loginTab.classList.remove('active');
+      regForm.style.display = 'block';
+      loginForm.style.display = 'none';
+    });
+
+    // ВХОД
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = loginForm.querySelector('input[type="text"]').value;
+      const pass = loginForm.querySelector('input[type="password"]').value;
+      
+      const btn = loginForm.querySelector('button');
+      btn.textContent = 'Вход...';
+      btn.disabled = true;
+      
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: email,
+          password: pass
+        });
+        
+        if (error) throw error;
+        
+        alert('Успешный вход!');
+        window.location.href = 'index.html';
+        
+      } catch (err) {
+        alert('Ошибка входа: ' + err.message);
+      } finally {
+        btn.textContent = 'ВОЙТИ';
+        btn.disabled = false;
+      }
+    });
+  });
+
+  // Проверка авторизации
+  async function checkAuth() {
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (session) {
+      // Пользователь уже авторизован - показываем инфу
+      showUserInfo(session.user);
+    }
+  }
+  
+  function showUserInfo(user) {
+    const authContainer = document.querySelector('.auth-container');
+    authContainer.innerHTML = `
+      <div class="user-panel">
+        <i class="fas fa-user-circle" style="font-size: 4rem; color: var(--accent);"></i>
+        <h2 style="margin: 20px 0 10px;">Добро пожаловать!</h2>
+        <p>${user.email}</p>
+        <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+          <a href="index.html" class="btn-mega">На главную</a>
+          <button id="logout-btn" class="btn-mega" style="background: transparent; border: 2px solid var(--accent); color: var(--accent);">Выйти</button>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.reload();
+    });
+  }
+
+  // РЕГИСТРАЦИЯ
+  const regForm = document.getElementById('reg-form');
+  regForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nick = regForm.querySelector('input[type="text"]').value;
+    const email = regForm.querySelector('input[type="email"]').value;
+    const pass = regForm.querySelector('input[type="password"]').value;
+    const skinFile = document.getElementById('skin-file').files[0];
+
+    try {
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: email,
+        password: pass,
+      });
+
+      if (authError) throw authError;
+
+      const userId = authData.user?.id;
+
+      if (!userId) {
+        throw new Error("Пользователь не был создан. Проверьте настройки Confirm Email в Supabase.");
+      }
+
+      let skinUrl = "";
+
+      if (skinFile) {
+        const fileName = `${nick}.png`;
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('skins')
+          .upload(fileName, skinFile, { upsert: true });
+
+        if (!uploadError) {
+          const { data: publicUrlData } = supabase.storage.from('skins').getPublicUrl(fileName);
+          skinUrl = publicUrlData.publicUrl;
+        }
+      }
+
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .insert([{ id: userId, username: nick, skin_url: skinUrl }]);
+
+      if (profileError) throw profileError;
+
+      alert('Ура! Ты в системе. Теперь открывай лаунчер и заходи!');
+      
+    } catch (err) {
+      alert('Что-то пошло не так: ' + err.message);
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>

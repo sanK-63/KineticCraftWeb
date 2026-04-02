@@ -228,7 +228,9 @@
         if (error) throw error;
         
         alert('Успешный вход!');
-        window.location.href = `kinetic-launcher://auth?token=${data.session.access_token}`;
+        const token = data.session.access_token;
+        window.location.href = `kinetic-launcher://auth?token=${token}`;
+        document.body.innerHTML += `<a href="kinetic-launcher://auth?token=${token}" style="display:block;margin:20px auto;padding:15px;background:var(--accent);color:white;text-align:center;border-radius:8px;max-width:300px;text-decoration:none;">Нажми тут, если лаунчер не открылся</a>`;
         
       } catch (err) {
         alert('Ошибка входа: ' + err.message);

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' https://unpkg.com https://cdn.jsdelivr.net 'unsafe-eval';
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    script-src 'self' https://unpkg.com https://cdn.jsdelivr.net 'unsafe-eval' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
     connect-src 'self' https://*.supabase.co https://api.mcstatus.io;
-    img-src 'self' data: https://*.supabase.co;
-    worker-src 'blob';
+    img-src 'self' data: https://*.supabase.co https://unpkg.com;
+    worker-src 'self' blob:;
 ">
     <title>KineticCraft — Твой лимит бесконечность</title>
     <link rel="stylesheet" href="styles.css">

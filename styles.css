@@ -528,3 +528,26 @@ body::after {
   border-radius: 12px;
   padding: 40px;
 }
+
+.status-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+#status-indicator.online {
+  background-color: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+#status-indicator.offline {
+  background-color: #ff4b2b;
+  box-shadow: 0 0 10px #ff4b2b;
+}

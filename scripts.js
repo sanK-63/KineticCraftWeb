@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     offset: 100
   });
 
-  // Theme toggle
   const toggle = document.getElementById('theme-toggle');
   const icon = toggle ? toggle.querySelector('i') : null;
   
@@ -29,22 +28,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Online count
-  const onlineCount = document.getElementById('online');
-  if (onlineCount) {
-    fetch("https://api.mcstatus.io/v2/status/java/vip.play.kz")
-      .then(res => res.json())
-      .then(data => {
-        onlineCount.textContent = data.players.online || '0';
-      })
-      .catch(() => {
-        onlineCount.textContent = '0';
-      });
-  }
+  updateServerStatus();
+  setInterval(updateServerStatus, 60000);
 
-  // Check auth status
   checkAuthStatus();
 });
+
+async function updateServerStatus() {
+  const serverIP = '92.47.224.152';
+  const onlineCount = document.getElementById('online');
+  const serverStatusText = document.getElementById('server-status-text');
+  
+  if (!onlineCount) return;
+  
+  try {
+    const response = await fetch(`https://api.mcstatus.io/v2/status/java/${serverIP}`);
+    const data = await response.json();
+
+    if (data.online) {
+      if (serverStatusText) {
+        serverStatusText.textContent = 'Сервер запущен';
+      }
+      onlineCount.textContent = `${data.players.online} / ${data.players.max}`;
+      
+      const statusIndicator = document.getElementById('status-indicator');
+      if (statusIndicator) {
+        statusIndicator.classList.add('online');
+        statusIndicator.classList.remove('offline');
+      }
+    } else {
+      if (serverStatusText) {
+        serverStatusText.textContent = 'На техобслуживании';
+      }
+      onlineCount.textContent = '0 / 0';
+      
+      const statusIndicator = document.getElementById('status-indicator');
+      if (statusIndicator) {
+        statusIndicator.classList.add('offline');
+        statusIndicator.classList.remove('online');
+      }
+    }
+  } catch (error) {
+    console.error('Ошибка при получении статуса:', error);
+    onlineCount.textContent = '?';
+  }
+}
 
 async function checkAuthStatus() {
   const nav = document.querySelector('.nav');
@@ -60,7 +88,6 @@ async function checkAuthStatus() {
     const { data: { session } } = await supabase.auth.getSession();
     
     if (session) {
-      // Получаем данные профиля
       const { data: profile } = await supabase
         .from('profiles')
         .select('username')
@@ -69,7 +96,6 @@ async function checkAuthStatus() {
 
       const username = profile?.username || session.user.email;
       
-      // Обновляем навигацию
       const authLink = nav.querySelector('a[href="auth.html"]');
       if (authLink) {
         authLink.innerHTML = `<i class="fas fa-user"></i> ${username}`;

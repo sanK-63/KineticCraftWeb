@@ -40,8 +40,13 @@
 
     <section class="container stats-row" data-aos="fade-up">
         <div class="col-4 stat-card glass-panel">
-            <div class="stat-value" id="online">...</div>
-            <div class="stat-desc">Игроков онлайн</div>
+            <div class="status-container">
+                <div id="status-indicator" class="offline"></div>
+                <div>
+                    <div class="stat-value" id="online">...</div>
+                    <div class="stat-desc" id="server-status-text">Загрузка...</div>
+                </div>
+            </div>
         </div>
         <div class="col-4 stat-card glass-panel">
             <div class="stat-value">5000+</div>

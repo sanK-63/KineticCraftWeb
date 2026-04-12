@@ -78,6 +78,9 @@ async function checkAuthStatus() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
+  const profileLink = nav.querySelector('a[href="profile.html"]');
+  const authLink = nav.querySelector('a[href="auth.html"]');
+
   try {
     const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
     const supabase = createClient(
@@ -96,14 +99,18 @@ async function checkAuthStatus() {
 
       const username = profile?.username || session.user.email;
       
-      const authLink = nav.querySelector('a[href="auth.html"]');
-      if (authLink) {
-        authLink.innerHTML = `<i class="fas fa-user"></i> ${username}`;
-        authLink.style.background = 'var(--accent)';
-        authLink.style.color = '#000';
+      if (authLink) authLink.style.display = 'none';
+      if (profileLink) {
+        profileLink.innerHTML = `<i class="fas fa-user"></i> ${username}`;
+        profileLink.style.display = '';
       }
+    } else {
+      if (authLink) authLink.style.display = '';
+      if (profileLink) profileLink.style.display = 'none';
     }
   } catch (err) {
     console.log('Auth check failed:', err);
+    if (authLink) authLink.style.display = '';
+    if (profileLink) profileLink.style.display = 'none';
   }
 }
